@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <strong><a class="navbar-brand logo" href="/">Accepted</a></strong>
+  </div>
+
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <% if current_user %>
+          Welcome <%= current_user.name %>
+        <% end %>
+     </li>
+      <li>
+        <% if current_user.nil? %>
+          <%= link_to "Log in with Facebook", facebook_login_path, id: "sign_in" %>
+        <% else %>
+          <%= link_to "Logout", logout_path, method: :delete %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
