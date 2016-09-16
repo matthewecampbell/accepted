@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914021246) do
+ActiveRecord::Schema.define(version: 20160916164939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "colleges", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "total_price_in_state"
+    t.integer  "total_price_out_of_state"
+    t.integer  "percent_admitted"
+    t.integer  "yield"
+    t.integer  "total_applicants"
+    t.string   "act_range"
+    t.string   "city"
+    t.string   "longitude"
+    t.string   "latitude"
+    t.string   "affiliation"
+    t.integer  "six_year_grad_rate"
+    t.integer  "total_enrollment"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +41,8 @@ ActiveRecord::Schema.define(version: 20160914021246) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.integer  "sign_in_count",    default: 0
+    t.boolean  "big_school"
   end
 
 end

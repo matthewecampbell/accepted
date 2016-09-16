@@ -15,6 +15,8 @@ gem 'faraday'
 gem 'bootstrap-sass'
 gem 'omniauth-facebook'
 gem 'pry'
+gem 'jquery-ui-rails'
+gem 'turbolinks', '~> 5.0.0'
 
 group :test do
   gem 'rspec-rails'

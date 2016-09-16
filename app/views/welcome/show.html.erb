@@ -1,0 +1,8 @@
+<% if current_user.big_school == nil %>
+  <h1> Welcome, <%= current_user.name %>!<h1>
+  <h5> We are going to ask you a few questions about general desires in a college. </br>
+    Your answers will help us recommend colleges that we think will be best for you! </h5></br>
+    <h5> Do you want to go to a school that has 10,000 or more enrolled students? <h5>
+      <%= button_to "Yes", big_school_path(big_school: true), method: :post %>
+      <%= button_to "No", big_school_path(big_school: false), method: :post %>
+<% end %>
