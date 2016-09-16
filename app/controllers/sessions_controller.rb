@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user.sign_in_count == 1
       redirect_to welcome_path
     else
-      redirect_to root_path
+      redirect_to dashboard_path
     end
   end
 
