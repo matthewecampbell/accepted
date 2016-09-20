@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/matthewecampbell/accepted.png?label=ready&title=Ready)](https://waffle.io/matthewecampbell/accepted)
 # Sample Rails Project Template
 
 This repo is to be used as a template for Rails projects. This includes gems and associated configurations commonly used in most Rails projects.

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :colleges,   only: [:index, :show]
   resources :users,      only: [:new, :create]
   root                           to: 'homes#show'
   get '/auth/facebook',          as: :facebook_login
