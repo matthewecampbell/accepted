@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916164939) do
+ActiveRecord::Schema.define(version: 20160920050113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20160916164939) do
     t.integer  "total_enrollment"
     t.datetime "updated_at"
     t.datetime "created_at"
+    t.integer  "act_low"
+    t.integer  "act_high"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,8 +43,13 @@ ActiveRecord::Schema.define(version: 20160916164939) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.integer  "sign_in_count",    default: 0
-    t.boolean  "big_school"
+    t.integer  "sign_in_count",          default: 0
+    t.integer  "enrollment_preference"
+    t.integer  "act_score"
+    t.integer  "in_state_max"
+    t.integer  "out_of_state_max"
+    t.string   "affiliation_preference"
+    t.integer  "grad_rate_preference"
   end
 
 end

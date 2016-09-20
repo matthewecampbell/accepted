@@ -13,6 +13,9 @@
     </div>
   </div>
   <div id="tabs-2">
-    Accepted's recommend colleges for <%= @user.name %>
+    <strong>Accepted's recommend colleges for <%= @user.name %></strong></br>
+    <% @recommended_colleges.each do |college| %>
+    <%= link_to "#{college.name}", college_path(college) %></br>
+    <% end %>
   </div>
 </div>

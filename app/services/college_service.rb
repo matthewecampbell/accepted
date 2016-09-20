@@ -1,11 +1,23 @@
 class CollegeService
 
   def initialize
-    @_conn = Faraday.new("http://acceptedapi.herokuapp.com/api/v1/colleges.json")
+    @_conn = Faraday.new("http://acceptedapi.herokuapp.com/api/v1")
   end
 
   def get_colleges
-    JSON.parse(conn.get.body, symbolize_names: true)
+    response = conn.get("/colleges.json")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def get_recommended_colleges(act, in_state, out_of_state, affiliation, grad_rate, enrollment)
+    response = conn.get("recommended_colleges?act=#{act}&in_state=#{in_state}&out_of_state=#{out_of_state}&affiliation=#{affiliation}&grad_rate=#{grad_rate}&enrollment=#{enrollment}")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def get_college(id)
+    binding.pry
+    response = conn.get("/colleges/#{id}.json")
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   private

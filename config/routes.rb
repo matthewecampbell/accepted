@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   get '/auth/failure',           to: redirect('/')
   delete '/logout',              to: 'sessions#destroy'
   get '/welcome',                to: 'welcome#show'
-  post '/big_school',            to: 'big_school#show'
+  get '/enrollment_preference',  to: 'enrollment_preference#show'
+  get '/in_state_max',           to: 'in_state_max#show'
+  get '/out_of_state_max',       to: 'out_of_state_max#show'
+  get '/act',                    to: 'act#show'
+  post '/affiliation',           to: 'affiliation#show'
+  get '/grad_rate',              to: 'grad_rate#show'
   get '/dashboard',              to: 'dashboard#show'
 end
