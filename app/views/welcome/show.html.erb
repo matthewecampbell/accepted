@@ -1,8 +1,59 @@
-<% if current_user.big_school == nil %>
-  <h1> Welcome, <%= current_user.name %>!<h1>
+<% if current_user.enrollment_preference == nil %>
+<h1> Welcome, <%= current_user.name %>!<h1>
   <h5> We are going to ask you a few questions about general desires in a college. </br>
     Your answers will help us recommend colleges that we think will be best for you! </h5></br>
-    <h5> Do you want to go to a school that has 10,000 or more enrolled students? <h5>
-      <%= button_to "Yes", big_school_path(big_school: true), method: :post %>
-      <%= button_to "No", big_school_path(big_school: false), method: :post %>
-<% end %>
+    <h5> What is the least amount of students you would like to have on-campus? </h5>
+    <%= form_tag("/enrollment_preference", method: "get") do %>
+    <%= label_tag(:amount, "Amount of Students") %>
+    <%= text_field_tag(:amount) %>
+    <%= submit_tag("Submit") %>
+    <% end %>
+    <% end %>
+    <% if current_user.act_score == nil %>
+    <h5> We are going to ask you a few questions about general desires in a college. </br>
+      Your answers will help us recommend colleges that we think will be best for you! </h5></br>
+      <h5> What did you score on the ACT? </h5>
+      <%= form_tag("/act", method: "get") do %>
+      <%= label_tag(:score, "ACT Score") %>
+      <%= text_field_tag(:score) %>
+      <%= submit_tag("Submit") %>
+      <% end %>
+      <% end %>
+      <% if current_user.out_of_state_max == nil %>
+      <h5> We are going to ask you a few questions about general desires in a college. </br>
+        Your answers will help us recommend colleges that we think will be best for you! </h5></br>
+        <h5> What is the maximum out-of-state tution that you'll pay? </h5>
+        <%= form_tag("/out_of_state_max", method: "get") do %>
+        <%= label_tag(:tuition, "Maximum Out-Of-State Tuition") %>
+        <%= text_field_tag(:tuition) %>
+        <%= submit_tag("Submit") %>
+        <% end %>
+        <% end %>
+      <% if current_user.in_state_max == nil %>
+      <h5> We are going to ask you a few questions about general desires in a college. </br>
+        Your answers will help us recommend colleges that we think will be best for you! </h5></br>
+        <h5> What is the maximum out-of-state tution that you'll pay? </h5>
+        <%= form_tag("/in_state_max", method: "get") do %>
+        <%= label_tag(:tuition, "Maximum In-State Tuition") %>
+        <%= text_field_tag(:tuition) %>
+        <%= submit_tag("Submit") %>
+        <% end %>
+        <% end %>
+          <% if current_user.grad_rate_preference == nil %>
+          <h5> We are going to ask you a few questions about general desires in a college. </br>
+            Your answers will help us recommend colleges that we think will be best for you! </h5></br>
+            <h5> What percentage is the lowest you'll go for 6 year graduation rate? </h5>
+            <%= form_tag("/grad_rate", method: "get") do %>
+            <%= label_tag(:grad_rate, "Grade Rate") %>
+            <%= text_field_tag(:grad_rate) %>
+            <%= submit_tag("Submit") %>
+            <% end %>
+            <% end %>
+            <% if current_user.affiliation_preference == nil %>
+            <h5> We are going to ask you a few questions about general desires in a college. </br>
+              Your answers will help us recommend colleges that we think will be best for you! </h5></br>
+              <h5> What kind of school affiliation do you prefer? </h5>
+              <%= button_to "Public School", affiliation_path(affiliation_preference: "public", method: :post) %>
+              <%= button_to "Private School", affiliation_path(affiliation_preference: "private_non_profit", method: :post) %>
+              <%= button_to "Private For Profit School", affiliation_path(affiliation_preference: "private_for_profit", method: :post) %>
+              <% end %>
