@@ -1,19 +1,21 @@
-<div id="tabs">
-  <ul>
-    <li><a href="#tabs-1">Profile Information</a></li>
-    <li><a href="#tabs-2">Colleges We Recommend</a></li>
-  </ul>
+<div id="tabs" class="transparent">
+  <div>
+    <ul>
+      <li><a href="#tabs-1">Profile Information</a></li>
+      <li><a href="#tabs-2">Colleges We Recommend</a></li>
+    </ul>
+  </div>
   <div id="tabs-1">
     <div class="panel panel-primary">
       <h1 class="text-center">User Dashboard</h1>
     </div>
-
     <div class="panel panel-primary">
       <p class="text-center"><strong>Welcome <%= @user.name  %></strong></p>
     </div>
   </div>
   <div id="tabs-2">
-    <strong>Accepted's recommend colleges for <%= @user.name %></strong></br>
+    <strong>Accepted's recommend colleges for <%= @user.name %></strong></br></br>
+    <%= link_to "Edit Preferences", edit_user_path(@user) %></br></br>
     <% @recommended_colleges.each do |college| %>
     <%= link_to "#{college.name}", college_path(college) %></br>
     <% end %>

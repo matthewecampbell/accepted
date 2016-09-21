@@ -1,28 +1,24 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <strong><a class="navbar-brand logo" href="/">Accepted</a></strong>
-  </div>
 
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right">
-      <li>
+<div class="transparent">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <strong><a class="navbar-brand logo" href="/"> <img src="2_copy.png" class="col-lg-1 col-md-1 col-xl-1 col-sm-1 img-responsive img-circle"></a></strong>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          Welcome <%= current_user.name %>
+        <li class="nav navbar-nav navbar-left"><a href="/dashboard">Home</li>
         <% end %>
-     </li>
-      <li>
+        <li><%= link_to "See All Colleges", colleges_path %></li>
+        <% if current_user %>
+        <li class="nav-welcome"> <%="Welcome #{current_user.name}!" %></li>
+        <% end %>
         <% if current_user.nil? %>
-          <%= link_to "Log in with Facebook", facebook_login_path, id: "sign_in" %>
+        <li> <%= link_to "Log in with Facebook", facebook_login_path, id: "sign_in" %></li>
         <% else %>
-          <%= link_to "Logout", logout_path, method: :delete %>
+        <li><%= link_to "Logout", logout_path, method: :delete %></li>
         <% end %>
-      </li>
-    </ul>
-  </div>
-</nav>
+      </ul>
+    </div>
+  </nav>
+</div>

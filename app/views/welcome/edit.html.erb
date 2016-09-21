@@ -1,0 +1,48 @@
+<div class="jumbotron transparent">
+<div class="panel panel-primary">
+  <h3 class="text-center">Welcome, <%= @user.name %>!<h3>
+</div>
+  <h5> We are going to ask you a few questions about general desires in a college. </br>
+    Your answers will help us recommend colleges that we think will be best for you! </h5></br>
+
+<%= form_for(@user, url: user_path(@user)) do |f| %>
+
+<h5>What did you score on the ACT?</h5>
+<%= f.label :act_score %>
+<%= f.text_field :act_score %>
+<br>
+
+<h5>What is the least amount of students you would like to have on-campus?</h5>
+<%= f.label :enrollment_preference %>
+<%= f.text_field :enrollment_preference %>
+<br>
+
+<h5> What is the maximum out-of-state tution that you'll pay? </h5>
+<%= f.label :out_of_state_max %>
+<%= f.text_field :out_of_state_max %>
+<br>
+
+  <h5> What is the maximum in-state tution that you'll pay? </h5>
+<%= f.label :in_state_max %>
+<%= f.text_field :in_state_max %>
+<br>
+
+
+<h5> What percentage is the lowest you'll go for 6 year graduation rate? </h5>
+<%= f.label :grad_rate_preference %>
+<%= f.text_field :grad_rate_preference %>
+
+<br>
+
+<h5> What kind of school affiliation do you prefer? </h5>
+<%= radio_button_tag(:affiliation_preference, "public") %>
+<%= label_tag(:affiliation_preference, "Public") %>
+<%= radio_button_tag(:affiliation_preference, "private_non_profit") %>
+<%= label_tag(:affiliation_preference, "Private Non-Profit") %>
+<%= radio_button_tag(:affiliation_preference, "private_for_profit") %>
+<%= label_tag(:affiliation_preference, "Private For Profit") %>
+<br>
+<%= f.submit "Submit Preferences"%>
+<br>
+<% end %>
+</div>

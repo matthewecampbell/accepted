@@ -18,3 +18,51 @@
 /*Declare each .scss file below with @import 'file_name';*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-image: url("rosehill.jpeg");
+  background-attachment: fixed;
+}
+
+.accepted-logo {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.transparent {
+  opacity: .85;
+}
+
+
+.nav-welcome {
+  bottom: 5px;
+   padding: 20px;
+}
+
+nav {
+   position: fixed;
+   top: 0px;
+}
+
+.navbar {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.site-title {
+  text-align: center;
+}
+
+.navbar {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+
+.main {
+  margin-top: 45px;
+}

@@ -1,0 +1,33 @@
+<h1><%= @college.name %></h1>
+<div class="transparent">
+<div id="tabs" class="transparent">
+  <ul>
+    <li><a href="#tabs-1">Basic Information</a></li>
+    <li><a href="#tabs-2">Costs</a></li>
+    <li><a href="#tabs-3">Admissions Statistics</a></li>
+  </ul>
+  <div id="tabs-1">
+    <div class="panel panel-primary">
+      <strong>Total_enrollment:</strong> <%= @college.total_enrollment %></br>
+      <strong>Affiliation:</strong> <%= @college.affiliation %></br>
+      <strong>City:</strong><%= @college.city %></br>
+      <!-- state? -->
+    </div>
+  </div>
+  <div id="tabs-2">
+    <div class="panel panel-primary">
+      <strong>Total Cost with In-State Tuition:</strong> <%= @college.total_price_in_state %></br>
+      <strong>Total Cost with Out-Of-State Tuition:</strong> <%= @college.total_price_out_of_state %></br>
+    </div>
+  </div>
+  <div id="tabs-3">
+    <div class="panel panel-primary">
+      <strong>Admissions Information For <%= @college.name %></strong></br>
+      <strong>Total Number of Applicants:</strong> <%= @college.total_applicants %></br>
+      <strong>Percent of Applicants Admitted:</strong> <%= @college.percent_admitted %>%</br>
+      <strong>Percent of Admitted Students that Attend <%= @college.name %></strong>: <%= @college.yield %>%</br>
+      <strong>Middle 50% of Students ACT Scores:</strong> <%= @college.act_range %></br>
+      <strong>Graduation Rate for 6 Years: </strong><%= @college.six_year_grad_rate %></br>
+    </div>
+  </div>
+</div>
