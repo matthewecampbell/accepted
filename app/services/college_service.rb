@@ -5,7 +5,7 @@ class CollegeService
   end
 
   def get_colleges
-    response = conn.get("/colleges.json")
+    response = conn.get("colleges")
     JSON.parse(response.body, symbolize_names: true)
   end
 
@@ -15,8 +15,7 @@ class CollegeService
   end
 
   def get_college(id)
-    binding.pry
-    response = conn.get("/colleges/#{id}.json")
+    response = conn.get("colleges/#{id}")
     JSON.parse(response.body, symbolize_names: true)
   end
 
