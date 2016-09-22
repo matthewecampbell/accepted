@@ -18,6 +18,6 @@ RSpec.describe "User Requests", type: :request do
 
     put '/users/1?act_score=33&enrollment_preference=8000&out_of_state_max=70000&in_state_max=70000&grad_rate_preference=60&user[affiliation_preference]=private'
 
-    expect(response).to redirect_to(location)
+    expect(response).to redirect_to(dashboard_path)
   end
 end

@@ -13,6 +13,6 @@ describe "GET '/auth/facebook/callback'" do
   end
 
   it "should redirect to root" do
-    expect(response).to redirect_to edit_welcome_path
+    expect(response).to redirect_to "/welcome"
   end
 end

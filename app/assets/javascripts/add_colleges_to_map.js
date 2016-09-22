@@ -1,6 +1,6 @@
 $(document).ready(function(){
      $.ajax({
-         url: "http://acceptedapi.herokuapp.com/api/v1/colleges/1.json",
+         url: "http://acceptedapi.herokuapp.com/api/v1/colleges/",
          method: "GET",
          dataType: "JSON",
          success: function(data){
