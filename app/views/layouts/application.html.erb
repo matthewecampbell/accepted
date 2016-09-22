@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>Accepted</title>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -16,5 +19,15 @@
     <div class="alert alert-<%= type %>"><%= sanitize(message) %></div>
     <% end %>
     <%= yield %>
+
+
+
+		<div class="clear"></div>
+		<div id="results"></div>
+		<p>A project by <a href="https://www.linkedin.com/in/matt-campbell-a1a95219">Matt Campbell</a>.</p>
+	</div>
+
+
   </body>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_KEY']%>&callback=initMap"></script>
 </html>

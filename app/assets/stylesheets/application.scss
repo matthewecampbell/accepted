@@ -19,6 +19,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+#all-sites-map {
+   height: 550px;
+   width: 90%;
+   margin: auto;
+ }
+
 body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
