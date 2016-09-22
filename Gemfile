@@ -18,6 +18,7 @@ gem 'pry'
 gem 'jquery-ui-rails'
 gem 'turbolinks', '~> 5.0.0'
 gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'ratyrate'
 
 group :test do
   gem 'rspec-rails'

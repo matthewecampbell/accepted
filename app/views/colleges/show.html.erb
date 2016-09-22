@@ -41,3 +41,27 @@
 <% end %>
 <% end %>
 </div>
+
+<div class="row well transparent">
+  <div class="small-2 large-2 columns">
+    <%= imdb_style_rating_for @college, current_user%>
+  </div>
+  <br>
+  <div class="small-2 large-4 columns">
+    <% if current_user %>
+      In State Price: <%= rating_for_user @college, current_user, "total_price_in_state", stars: 5 %>
+      <br>
+      Out Of State Price: <%= rating_for_user @college, current_user, "total_price_out_of_state", stars: 5 %>
+      <br>
+      Act Range: <%= rating_for_user @college, current_user, "act_range", stars: 5 %>
+      <br>
+      Graduation Rate: <%= rating_for_user @college, current_user, "six_year_grad_rate", stars: 5 %>
+      <br>
+      Affiliation: <%= rating_for_user @college, current_user, "affiliation", stars: 5 %>
+      <br>
+      City: <%= rating_for_user @college, current_user, "city", stars: 5 %>
+      <br>
+      Total Enrollment: <%= rating_for_user @college, current_user, "total_enrollment", stars: 5 %>
+    <% end %>
+  </div>
+</div>

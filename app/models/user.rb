@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :favorite_colleges
+  ratyrate_rater
 
   def self.from_omniauth(auth)
     where(uid: auth[:uid]).first_or_create do |user|

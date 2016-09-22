@@ -70,4 +70,5 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include OmniAuthTestHelper, type: :request
+  config.include Requests::JsonHelpers, type: :request
 end
