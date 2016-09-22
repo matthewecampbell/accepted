@@ -17,24 +17,24 @@
 <%= f.text_field :enrollment_preference %>
 <br>
 
-<h5> What is the maximum out-of-state tution that you'll pay? </h5>
+<h5> What is the maximum out-of-state tution that you'll pay? (This includes room and board, books and fees.) </h5>
 <%= f.label :out_of_state_max %>
 <%= f.text_field :out_of_state_max %>
 <br>
 
-  <h5> What is the maximum in-state tution that you'll pay? </h5>
+  <h5> What is the maximum in-state tution that you'll pay? (This includes room and board, books and fees.) </h5>
 <%= f.label :in_state_max %>
 <%= f.text_field :in_state_max %>
 <br>
 
 
-<h5> What percentage is the lowest you'll go for 6 year graduation rate? </h5>
+<h5> What percentage is the lowest you'll go for 6 year graduation rate? (This refers to the amount of students who graduate in 6 years.)</h5>
 <%= f.label :grad_rate_preference %>
 <%= f.text_field :grad_rate_preference %>
 
 <br>
 
-<h5> What kind of school affiliation do you prefer? </h5>
+<h5> What kind of school affiliation do you prefer? (Public, Private, etc.)</h5>
 <%= radio_button_tag(:affiliation_preference, "public") %>
 <%= label_tag(:affiliation_preference, "Public") %>
 <%= radio_button_tag(:affiliation_preference, "private_non_profit") %>

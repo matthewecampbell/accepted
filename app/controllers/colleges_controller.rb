@@ -5,6 +5,10 @@ class CollegesController < ApplicationController
 
   def show
     @college = College.find(params[:id])
+    @post_meta = {
+      latitude: @college.latitude,
+      longitude: @college.longitude
+    }
   end
 
   def favorite
