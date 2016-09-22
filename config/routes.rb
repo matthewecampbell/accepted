@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :colleges,   only: [:index, :show]
   resources :search,   only: [:index]
-  resources :users,      only: [:new, :create, :edit, :update]
+  resources :users,      only: [:new, :create, :edit, :update, :post]
   root                           to: 'homes#show'
   get '/auth/facebook',          as: :facebook_login
   get '/auth/facebook/callback', to: 'sessions#create'

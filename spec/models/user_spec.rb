@@ -13,4 +13,5 @@ RSpec.describe User, type: :model do
   it { should have_db_column "out_of_state_max" }
   it { should have_db_column "affiliation_preference" }
   it { should have_db_column "grad_rate_preference" }
+  it { should have_many(:favorite_colleges)}
 end
