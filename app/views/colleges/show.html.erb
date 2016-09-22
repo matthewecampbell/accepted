@@ -30,4 +30,9 @@
       <strong>Graduation Rate for 6 Years: </strong><%= @college.six_year_grad_rate %></br>
     </div>
   </div>
+  <% unless current_user.favorite_colleges.any?{ |college| college.name == @college.name } %>
+  <%= form_tag(controller: "colleges", action: "favorite", method: "post") do %>
+    <%= submit_tag "Favorite"%>
+<% end %>
+<% end %>
 </div>

@@ -3,6 +3,7 @@
     <ul>
       <li><a href="#tabs-1">Profile Information</a></li>
       <li><a href="#tabs-2">Colleges We Recommend</a></li>
+      <li><a href="#tabs-3">Your Favorite Colleges</a></li>
     </ul>
   </div>
   <div id="tabs-1">
@@ -17,6 +18,12 @@
     <strong>Accepted's recommend colleges for <%= @user.name %></strong></br></br>
     <%= link_to "Edit Preferences", edit_user_path(@user) %></br></br>
     <% @recommended_colleges.each do |college| %>
+    <%= link_to "#{college.name}", college_path(college) %></br>
+    <% end %>
+  </div>
+  <div id="tabs-3">
+    <strong><%= @user.name %>'s Favorite Colleges'</strong></br></br>
+    <% @user.favorite_colleges.each do |college| %>
     <%= link_to "#{college.name}", college_path(college) %></br>
     <% end %>
   </div>

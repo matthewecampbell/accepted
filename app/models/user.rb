@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :favorites
+  has_many :colleges, through: :favorites
+  has_many :favorite_colleges
+  
   def self.from_omniauth(auth)
     where(uid: auth[:uid]).first_or_create do |user|
       user.uid         = auth.uid
