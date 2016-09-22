@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :colleges,   only: [:index, :show]
+  resources :search,   only: [:index]
   resources :users,      only: [:new, :create, :edit, :update]
   root                           to: 'homes#show'
   get '/auth/facebook',          as: :facebook_login
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
   post '/affiliation',           to: 'affiliation#show'
   get '/grad_rate',              to: 'grad_rate#show'
   get '/dashboard',              to: 'dashboard#show'
+  post 'colleges/:id/favorite',  to: 'colleges#favorite'
 end

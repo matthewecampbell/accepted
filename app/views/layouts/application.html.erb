@@ -11,6 +11,10 @@
 
   <body>
     <%= render 'layouts/navbar' %>
+    <div id="content" class="container">
+    <% flash.each do |type, message| %>
+    <div class="alert alert-<%= type %>"><%= sanitize(message) %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

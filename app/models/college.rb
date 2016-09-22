@@ -1,4 +1,5 @@
 class College < ApplicationRecord
+  has_many :favorites
 
   def self.all
     college_service = CollegeService.new
