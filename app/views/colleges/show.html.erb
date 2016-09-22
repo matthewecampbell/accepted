@@ -1,6 +1,6 @@
 <h1><%= @college.name %></h1>
-<div class="transparent">
-<div id="tabs" class="transparent">
+<div>
+<div id="tabs">
   <ul>
     <li><a href="#tabs-1">Basic Information</a></li>
     <li><a href="#tabs-2">Costs</a></li>
@@ -11,6 +11,11 @@
       <strong>Total_enrollment:</strong> <%= @college.total_enrollment %></br>
       <strong>Affiliation:</strong> <%= @college.affiliation %></br>
       <strong>City:</strong><%= @college.city %></br>
+
+      <div class="row">
+        <div id="all-sites-map">
+        </div>
+      </div>
       <!-- state? -->
     </div>
   </div>
