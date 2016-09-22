@@ -1,4 +1,5 @@
 <h1><%= @college.name %></h1>
+<%= hydration('postMeta', @post_meta) %>
 <div>
 <div id="tabs">
   <ul>
@@ -13,7 +14,7 @@
       <strong>City:</strong><%= @college.city %></br>
 
       <div class="row">
-        <div id="all-sites-map">
+        <div id="all-sites-map" data-lat="<%= @college.latitude  %>" data-long="<%= @college.longitude %>">
         </div>
       </div>
       <!-- state? -->
@@ -21,8 +22,8 @@
   </div>
   <div id="tabs-2">
     <div class="panel panel-primary">
-      <strong>Total Cost with In-State Tuition:</strong> <%= @college.total_price_in_state %></br>
-      <strong>Total Cost with Out-Of-State Tuition:</strong> <%= @college.total_price_out_of_state %></br>
+      <strong>Total Cost with In-State Tuition:</strong> <%= number_to_currency(@college.total_price_in_state) %></br>
+      <strong>Total Cost with Out-Of-State Tuition:</strong> <%= number_to_currency(@college.total_price_out_of_state) %></br>
     </div>
   </div>
   <div id="tabs-3">
@@ -32,7 +33,7 @@
       <strong>Percent of Applicants Admitted:</strong> <%= @college.percent_admitted %>%</br>
       <strong>Percent of Admitted Students that Attend <%= @college.name %></strong>: <%= @college.yield %>%</br>
       <strong>Middle 50% of Students ACT Scores:</strong> <%= @college.act_range %></br>
-      <strong>Graduation Rate for 6 Years: </strong><%= @college.six_year_grad_rate %></br>
+      <strong>Graduation Rate for 6 Years: </strong><%= @college.six_year_grad_rate %>%</br>
     </div>
   </div>
   <% unless current_user.favorite_colleges.any?{ |college| college.name == @college.name } %>
