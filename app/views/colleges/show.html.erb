@@ -6,13 +6,20 @@
     <li><a href="#tabs-1">Basic Information</a></li>
     <li><a href="#tabs-2">Costs</a></li>
     <li><a href="#tabs-3">Admissions Statistics</a></li>
+    <li><a href="#tabs-4">Athletic Information</a></li>
   </ul>
   <div id="tabs-1">
     <div class="panel panel-primary">
-      <strong>Total_enrollment:</strong> <%= @college.total_enrollment %></br>
-      <strong>Affiliation:</strong> <%= @college.affiliation %></br>
-      <strong>City:</strong><%= @college.city %></br>
-
+      <strong>Total_enrollment:</strong> <%= @college.total_enrollment %> Students</br>
+      <strong>Affiliation:</strong> <%= @college.affiliation.capitalize %></br>
+      <strong>Location: </strong><%= @college.address%>
+      <%= @college.city %>, <%= @college.state %> <%= @college.zip %></br>
+      <% if @college.phone_number %>
+      <strong>Phone Number: </strong><%= @college.phone_number%>
+      <% end %>
+      <% if @college.website %>
+      <a href="http://<%= @college.website %>" class="btn btn-primary">Visit <%= @college.name %>'s Website</a>
+      <% end %>
       <div class="row">
         <div id="all-sites-map" data-lat="<%= @college.latitude  %>" data-long="<%= @college.longitude %>">
         </div>
@@ -24,6 +31,18 @@
     <div class="panel panel-primary">
       <strong>Total Cost with In-State Tuition:</strong> <%= number_to_currency(@college.total_price_in_state) %></br>
       <strong>Total Cost with Out-Of-State Tuition:</strong> <%= number_to_currency(@college.total_price_out_of_state) %></br>
+      <strong>Average Total Cost of Attendance After Aid and Scholarships:</strong> <%= number_to_currency(@college.average_price_after_financial_aid) %></br>
+      <strong>Average Total Cost of Attendance If Family Income is Less than $30,000:</strong> <%= number_to_currency(@college.average_price_if_less_than_30000) %></br>
+      <strong>Average Total Cost of Attendance If Family Income is Less than $48,000:</strong> <%= number_to_currency(@college.average_price_if_less_than_48000) %></br>
+      <strong>Average Total Cost of Attendance If Family Income is Less than $75,000:</strong> <%= number_to_currency(@college.average_price_if_less_than_75000) %></br>
+      <strong>Average Total Cost of Attendance If Family Income is Less than $110,000:</strong> <%= number_to_currency(@college.average_price_if_less_than_110000) %></br>
+      <strong>Average Total Cost of Attendance If Family Income is Greater than $110,000:</strong> <%= number_to_currency(@college.average_price_if_greater_than_110000) %></br>
+      <% if @college.financial_aid_address %>
+      <a href="http://<%= @college.financial_aid_address %>" class="btn btn-primary col-md-4">Visit <%= @college.name %>'s Financial Aid Site</a><br></br></br>
+      <% end %>
+      <% if @college.net_price_calculator %>
+      <a href="http://<%= @college.net_price_calculator %>" class="btn btn-primary col-md-4">Visit <%= @college.name %>'s Net Price Calculator</a> (estimate your total cost of attendance)<br></br></br>
+      <% end %>
     </div>
   </div>
   <div id="tabs-3">
@@ -36,9 +55,21 @@
       <strong>Graduation Rate for 6 Years: </strong><%= @college.six_year_grad_rate %>%</br>
     </div>
   </div>
+  <div id="tabs-4">
+    <div class="panel panel-primary">
+      <strong>Member of the NCAA:</strong> <%= @college.ncaa_membership %></br>
+      <strong>Has a Football Team:</strong> <%= @college.football_team? %></br>
+      <strong>Has a Basketball Team:</strong> <%= @college.basketball_team? %></br>
+      <strong>Has a Baseball Team:</strong> <%= @college.baseball_team? %></br>
+      <strong>Has a Cross Country Team:</strong> <%= @college.cross_country_team? %></br>
+    </div>
+  </div>
   <% unless current_user.favorite_colleges.any?{ |college| college.name == @college.name } %>
   <%= form_tag(controller: "colleges", action: "favorite", method: "post") do %>
-    <%= submit_tag "Favorite"%>
+    <%= submit_tag "Favorite", class: "btn btn-primary col-md-3 col-md-offset-3"%>
 <% end %>
+<% end %>
+<% if @college.application_address %>
+<a href="http://<%= @college.application_address %>" class="btn btn-primary col-md-offset-1">Apply to <%= @college.name %></a>
 <% end %>
 </div>
