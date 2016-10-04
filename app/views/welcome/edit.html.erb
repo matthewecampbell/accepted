@@ -2,12 +2,12 @@
 <div class="panel panel-primary">
   <h3 class="text-center">Welcome, <%= @user.name %>!<h3>
 </div>
-  <h5> We are going to ask you a few questions about general desires in a college. </br>
-    Your answers will help us recommend colleges that we think will be best for you! </h5></br>
+  <h4 class="text-center"> We are going to ask you a few questions about general desires in a college.
+    Your answers will help us recommend colleges that we think will be best for you! </h4></br>
 
 <%= form_for(@user, url: user_path(@user), method: :put) do |f| %>
 
-<h5>What did you score on the ACT?</h5>
+<h5 class="act">What did you score on the ACT?</h5>
 <%= f.label :act_score %>
 <%= f.text_field :act_score %>
 <br>
@@ -42,7 +42,14 @@
 <%= radio_button_tag(:affiliation_preference, "private_for_profit") %>
 <%= label_tag(:affiliation_preference, "Private For Profit") %>
 <br>
-<%= f.submit "Submit Preferences", method: :put %>
+<%= f.submit "Submit Preferences", method: :put, class: "btn btn-secondary" %>
 <br>
 <% end %>
 </div>
+
+<script>
+$(document).ready(function(){
+    $('.act').tooltip({title: "This will help us figure out good academic fits.", animation: true});
+    $('.text-center').tooltip({title: "Hooray!", animation: false});
+});
+</script>
