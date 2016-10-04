@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get '/grad_rate',              to: 'grad_rate#show'
   get '/dashboard',              to: 'dashboard#show'
   post 'colleges/:id/favorite',  to: 'colleges#favorite'
+  post 'colleges/:id/unfavorite',  to: 'colleges#unfavorite'
 end

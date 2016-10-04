@@ -4,12 +4,13 @@
 #
 # Note that this schema.rb definition is the authoritative source for your
 # database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003020644) do
+ActiveRecord::Schema.define(version: 20161004040938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +74,26 @@ ActiveRecord::Schema.define(version: 20161003020644) do
     t.integer  "act_low"
     t.integer  "act_high"
     t.integer  "user_id"
+    t.string   "website"
+    t.string   "phone_number"
+    t.string   "financial_aid_address"
+    t.string   "admissions_address"
+    t.string   "application_address"
+    t.string   "net_price_calculator"
+    t.integer  "average_price_after_financial_aid"
+    t.integer  "average_price_if_less_than_30000"
+    t.integer  "average_price_if_less_than_48000"
+    t.integer  "average_price_if_less_than_75000"
+    t.integer  "average_price_if_less_than_110000"
+    t.integer  "average_price_if_greater_than_110000"
+    t.string   "ncaa_membership"
+    t.string   "football_team?"
+    t.string   "basketball_team?"
+    t.string   "baseball_team?"
+    t.string   "cross_country_team?"
+    t.string   "address"
+    t.integer  "zip"
+    t.string   "state"
     t.index ["user_id"], name: "index_favorite_colleges_on_user_id", using: :btree
   end
 

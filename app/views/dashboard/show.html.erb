@@ -1,30 +1,68 @@
-<div id="tabs" class="transparent">
-  <div>
+<div class="transparent">
+  <div id="tabs">
     <ul>
       <li><a href="#tabs-1">Profile Information</a></li>
       <li><a href="#tabs-2">Colleges We Recommend</a></li>
       <li><a href="#tabs-3">Your Favorite Colleges</a></li>
     </ul>
-  </div>
-  <div id="tabs-1">
-    <div class="panel">
-      <h1 class="text-center">User Dashboard</h1>
+    <div id="tabs-1">
+      <div class="panel">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td><strong>Size Preference</strong> </td>
+              <td>At least <%= number_with_delimiter(current_user.enrollment_preference, :delimiter => ',') %> Students</td>
+            </tr>
+            <tr>
+              <td><strong>Act Score</strong> </td>
+              <td><%= current_user.act_score %></td>
+            </tr>
+            <tr>
+              <td><strong>In-state Tution Max </strong></td>
+              <td><%= current_user.in_state_max %></td>
+            </tr>
+            <tr>
+              <td><strong>Out-of-state Tutition Max </strong></td>
+              <td> <%= current_user.out_of_state_max%></td>
+            </tr>
+            <tr>
+              <td> <strong>Affiliation Preference </strong></td>
+              <td> <%= current_user.affiliation_preference %></td>
+            </tr>
+            <tr>
+              <td> <strong>Grad Rate Preference </strong></td>
+              <td> At least <%= current_user.grad_rate_preference %>%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="panel">
-      <p class="text-center"><strong>Welcome <%= @user.name  %></strong></p>
+    <div id="tabs-2">
+      <div class="panel">
+        <strong>Accepted's recommended colleges for <%= @user.name %></strong></br></br>
+        <strong><%= link_to "Edit Preferences", edit_user_path(@user) %></strong></br></br>
+        <table class="table table-bordered">
+          <tbody>
+            <% @recommended_colleges.each do |college| %>
+            <tr>
+              <td><%= link_to "#{college.name}", college_path(college) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <div id="tabs-2">
-    <strong>Accepted's recommended colleges for <%= @user.name %></strong></br></br>
-    <strong><%= link_to "Edit Preferences", edit_user_path(@user) %></strong></br></br>
-    <% @recommended_colleges.each do |college| %>
-    <%= link_to "#{college.name}", college_path(college) %></br>
-    <% end %>
-  </div>
-  <div id="tabs-3">
-    <strong><%= @user.name %>'s Favorite Colleges'</strong></br></br>
-    <% @user.favorite_colleges.each do |college| %>
-    <%= link_to "#{college.name}", college_path(college) %></br>
-    <% end %>
-  </div>
-</div>
+    <div id="tabs-3">
+      <div class="panel">
+        <strong><%= @user.name %>'s Favorite Colleges</strong></br></br>
+        <table class="table table-bordered">
+          <tbody>
+            <% @user.favorite_colleges.each do |college| %>
+            <tr>
+              <td><%= link_to "#{college.name}", college_path(college) %></td>
+            </tr>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
