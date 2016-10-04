@@ -1,75 +1,197 @@
 <h1><%= @college.name %></h1>
 <%= hydration('postMeta', @post_meta) %>
-<div>
-<div id="tabs">
-  <ul>
-    <li><a href="#tabs-1">Basic Information</a></li>
-    <li><a href="#tabs-2">Costs</a></li>
-    <li><a href="#tabs-3">Admissions Statistics</a></li>
-    <li><a href="#tabs-4">Athletic Information</a></li>
-  </ul>
-  <div id="tabs-1">
-    <div class="panel panel-primary">
-      <strong>Total_enrollment:</strong> <%= @college.total_enrollment %> Students</br>
-      <strong>Affiliation:</strong> <%= @college.affiliation.capitalize %></br>
-      <strong>Location: </strong><%= @college.address%>
-      <%= @college.city %>, <%= @college.state %> <%= @college.zip %></br>
-      <% if @college.phone_number %>
-      <strong>Phone Number: </strong><%= @college.phone_number%>
-      <% end %>
-      <% if @college.website %>
-      <a href="http://<%= @college.website %>" class="btn btn-primary">Visit <%= @college.name %>'s Website</a>
-      <% end %>
-      <div class="row">
-        <div id="all-sites-map" data-lat="<%= @college.latitude  %>" data-long="<%= @college.longitude %>">
+<div class="transparent">
+  <div id="tabs">
+    <ul>
+      <li><a href="#tabs-1">Basic Information</a></li>
+      <li><a href="#tabs-2">Costs</a></li>
+      <li><a href="#tabs-3">Admissions Statistics</a></li>
+      <li><a href="#tabs-4">Athletic Information</a></li>
+    </ul>
+    <div id="tabs-1">
+      <div class="panel panel-primary">
+        <div class="container col-md-11 col-lg-11 col-lg-11">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td><strong>Total Enrollment:</strong> </td>
+                <td><%= number_with_delimiter(@college.total_enrollment, :delimiter => ',') %> Students</td>
+              </tr>
+              <tr>
+                <td><strong>Affiliation:</strong> </td>
+                <td><%= @college.affiliation.capitalize %></td>
+              </tr>
+              <tr>
+                <td><strong>Location: </strong></td>
+                <td><%= @college.address%> <%= @college.city %>, <%= @college.state %> <%= @college.zip %></td>
+              </tr>
+              <% if @college.phone_number %>
+              <tr>
+                <td>  <strong>Phone Number: </strong></td>
+                <td> <%= @college.phone_number%></td>
+              </tr>
+              <% end %>
+              <% if @college.website %>
+              <tr>
+                <td> <strong>Visit Website: </strong></td>
+                <td> <%= link_to "#{@college.name}'s Website", "http://#{@college.website}" %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div id="all-sites-map" data-lat="<%= @college.latitude  %>" data-long="<%= @college.longitude %>">
+          </div>
+        </div>
+        <!-- state? -->
+      </div>
+    </div>
+    <div id="tabs-2">
+      <div class="panel">
+        <div class="container col-md-11 col-lg-11 col-lg-11">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td><strong>Total Cost with In-State Tuition:</strong></td>
+                <td><%= number_to_currency(@college.total_price_in_state) %></td>
+              </tr>
+              <tr>
+                <td><strong>Total Cost with Out-Of-State Tuition:</strong></td>
+                <td><%= number_to_currency(@college.total_price_out_of_state) %></td>
+              </tr>
+              <% if @college.average_price_after_financial_aid %>
+              <tr>
+                <td><strong> Average Total Cost of Attendance After Aid and Scholarships:</strong></td>
+                <td> <%= number_to_currency(@college.average_price_after_financial_aid) %></td>
+              </tr>
+              <% end %>
+              <% if @college.average_price_if_less_than_30000 %>
+              <tr>
+                <td><strong>Average Total Cost of Attendance If Family Income is Less than $30,000:</strong></td>
+                <td><%= number_to_currency(@college.average_price_if_less_than_30000) %></td>
+              </tr>
+              <% end %>
+              <% if @college.average_price_if_less_than_48000 %>
+              <tr>
+                <td><strong>Average Total Cost of Attendance If Family Income is Less than $48,000:</strong></td>
+                <td> <%= number_to_currency(@college.average_price_if_less_than_48000) %></td>
+              </tr>
+              <% end %>
+              <% if @college.average_price_if_less_than_75000 %>
+              <tr>
+                <td><strong>Average Total Cost of Attendance If Family Income is Less than $75,000:</strong> </td>
+                <td> <%= number_to_currency(@college.average_price_if_less_than_75000) %></td>
+              </tr>
+              <% end %>
+              <% if @college.average_price_if_less_than_110000 %>
+              <tr>
+                <td><strong>Average Total Cost of Attendance If Family Income is Less than $110,000:</strong> </td>
+                <td> <%= number_to_currency(@college.average_price_if_less_than_110000) %></td>
+              </tr>
+              <% end %>
+              <% if @college.average_price_if_greater_than_110000 %>
+              <tr>
+                <td><strong>Average Total Cost of Attendance If Family Income is Greater than $110,000:</strong> </td>
+                <td> <%= number_to_currency(@college.average_price_if_greater_than_110000) %></td>
+              </tr>
+              <% end %>
+              <% if @college.financial_aid_address %>
+              <tr>
+                <td> <strong><%=link_to "Visit Financial Aid Site", "http://#{@college.financial_aid_address}" %></strong></td>
+              </tr>
+              <% end %>
+              <% if @college.net_price_calculator %>
+              <tr>
+                <td><strong><%=link_to "Visit Net Price Calculator", "http://#{@college.net_price_calculator}" %></strong></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
-      <!-- state? -->
     </div>
-  </div>
-  <div id="tabs-2">
-    <div class="panel panel-primary">
-      <strong>Total Cost with In-State Tuition:</strong> <%= number_to_currency(@college.total_price_in_state) %></br>
-      <strong>Total Cost with Out-Of-State Tuition:</strong> <%= number_to_currency(@college.total_price_out_of_state) %></br>
-      <strong>Average Total Cost of Attendance After Aid and Scholarships:</strong> <%= number_to_currency(@college.average_price_after_financial_aid) %></br>
-      <strong>Average Total Cost of Attendance If Family Income is Less than $30,000:</strong> <%= number_to_currency(@college.average_price_if_less_than_30000) %></br>
-      <strong>Average Total Cost of Attendance If Family Income is Less than $48,000:</strong> <%= number_to_currency(@college.average_price_if_less_than_48000) %></br>
-      <strong>Average Total Cost of Attendance If Family Income is Less than $75,000:</strong> <%= number_to_currency(@college.average_price_if_less_than_75000) %></br>
-      <strong>Average Total Cost of Attendance If Family Income is Less than $110,000:</strong> <%= number_to_currency(@college.average_price_if_less_than_110000) %></br>
-      <strong>Average Total Cost of Attendance If Family Income is Greater than $110,000:</strong> <%= number_to_currency(@college.average_price_if_greater_than_110000) %></br>
-      <% if @college.financial_aid_address %>
-      <a href="http://<%= @college.financial_aid_address %>" class="btn btn-primary col-md-4">Visit <%= @college.name %>'s Financial Aid Site</a><br></br></br>
-      <% end %>
-      <% if @college.net_price_calculator %>
-      <a href="http://<%= @college.net_price_calculator %>" class="btn btn-primary col-md-4">Visit <%= @college.name %>'s Net Price Calculator</a> (estimate your total cost of attendance)<br></br></br>
-      <% end %>
+    <div id="tabs-3">
+      <div class="panel">
+        <div class="container col-md-11 col-lg-11 col-lg-11">
+          <table class="table table-bordered">
+            <tbody>
+              <% if @college.total_applicants %>
+              <tr>
+                <td><strong>Total Number of Applicants:</strong> </td>
+                <td><%= number_with_delimiter(@college.total_applicants, :delimiter => ',') %></td>
+              </tr>
+              <% end %>
+              <% if @college.percent_admitted %>
+              <tr>
+                <td><strong>Percent of Applicants Admitted:</strong> </td>
+                <td><%= @college.percent_admitted %></td>
+              </tr>
+              <% end %>
+              <% if @college.yield %>
+              <tr>
+                <td><strong>Percent of Admitted Students that Attend <%= @college.name %>:</strong></td>
+                <td> <%= @college.yield %></td>
+              </tr>
+              <% end %>
+              <% if @college.act_range %>
+              <tr>
+                <td><strong>Middle 50% of Students ACT Scores:</strong></td>
+                <td> <%= @college.act_range %></td>
+              </tr>
+              <% end %>
+              <% if @college.six_year_grad_rate %>
+              <tr>
+                <td><strong>Graduation Rate for 6 Years: </strong></td>
+                <td><%= @college.six_year_grad_rate %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
-  <div id="tabs-3">
-    <div class="panel panel-primary">
-      <strong>Admissions Information For <%= @college.name %></strong></br>
-      <strong>Total Number of Applicants:</strong> <%= @college.total_applicants %></br>
-      <strong>Percent of Applicants Admitted:</strong> <%= @college.percent_admitted %>%</br>
-      <strong>Percent of Admitted Students that Attend <%= @college.name %></strong>: <%= @college.yield %>%</br>
-      <strong>Middle 50% of Students ACT Scores:</strong> <%= @college.act_range %></br>
-      <strong>Graduation Rate for 6 Years: </strong><%= @college.six_year_grad_rate %>%</br>
+    <div id="tabs-4">
+      <div class="panel">
+        <div class="container col-md-11 col-lg-11 col-lg-11">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td> <strong>Member of the NCAA:</strong> </td>
+                <td><%= @college.ncaa_membership %></td>
+              </tr>
+              <tr>
+                <td><strong>Has a Football Team:</strong></td>
+                <td><%= @college.football_team? %></td>
+              </tr>
+              <tr>
+                <td><strong>Has a Basketball Team:</strong> </td>
+                <td><%= @college.basketball_team? %></td>
+              </tr>
+              <tr>
+                <td><strong>Has a Baseball Team:</strong> </td>
+                <td><%= @college.baseball_team? %></td>
+              </tr>
+              <tr>
+                <td><strong>Has a Cross Country Team:</strong></td>
+                <td> <%= @college.cross_country_team? %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+    <% if current_user.favorite_colleges.any?{ |college| college.name == @college.name } %>
+    <%= form_tag(controller: "colleges", action: "unfavorite", method: "post") do %>
+    <%= submit_tag "Unfavorite", class: "btn btn-danger well well-sm col-md-3 col-md-offset-1"%>
+    <% end %>
+    <% else current_user.favorite_colleges.any?{ |college| college.name == @college.name } %>
+    <%= form_tag(controller: "colleges", action: "favorite", method: "post") do %>
+    <%= submit_tag "Favorite", class: "btn btn-secondary well well-sm col-md-3 col-md-offset-1"%>
+    <% end %>
+    <% end %>
+    <% if @college.application_address %>
+    <a href="http://<%= @college.application_address %>" class="btn btn-secondary well well-sm col-md-offset-1">Apply to <%= @college.name %></a>
+    <% end %>
   </div>
-  <div id="tabs-4">
-    <div class="panel panel-primary">
-      <strong>Member of the NCAA:</strong> <%= @college.ncaa_membership %></br>
-      <strong>Has a Football Team:</strong> <%= @college.football_team? %></br>
-      <strong>Has a Basketball Team:</strong> <%= @college.basketball_team? %></br>
-      <strong>Has a Baseball Team:</strong> <%= @college.baseball_team? %></br>
-      <strong>Has a Cross Country Team:</strong> <%= @college.cross_country_team? %></br>
-    </div>
-  </div>
-  <% unless current_user.favorite_colleges.any?{ |college| college.name == @college.name } %>
-  <%= form_tag(controller: "colleges", action: "favorite", method: "post") do %>
-    <%= submit_tag "Favorite", class: "btn btn-primary col-md-3 col-md-offset-3"%>
-<% end %>
-<% end %>
-<% if @college.application_address %>
-<a href="http://<%= @college.application_address %>" class="btn btn-primary col-md-offset-1">Apply to <%= @college.name %></a>
-<% end %>
 </div>
