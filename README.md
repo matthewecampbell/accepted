@@ -14,7 +14,7 @@ cd accepted
 ```
 Run bundle:
 ```
-Bundle
+bundle
 ```
 To start the server:
 ```
