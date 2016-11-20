@@ -10,7 +10,7 @@ git clone git@github.com:matthewecampbell/accepted.git
 ```
 * `cd` into the project directory:
 ```
-cd <your-project-name>
+cd accepted
 ```
 Run bundle:
 ```
