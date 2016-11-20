@@ -14,10 +14,10 @@ cd accepted
 ```
 Run bundle:
 ```
-* Bundle
+Bundle
 ```
 To start the server:
 ```
-*rails s
+rails s
 ```
 Visit localhost:3000 to run the app on your machine.
