@@ -21,3 +21,6 @@ To start the server:
 rails s
 ```
 Visit localhost:3000 to run the app on your machine.
+
+
+*note - I may be taking the OAuth out and emplementing standard BCrypt soon
