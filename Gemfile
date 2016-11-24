@@ -19,6 +19,7 @@ gem 'jquery-ui-rails'
 gem 'turbolinks', '~> 5.0.0'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'rails_hydration'
+gem 'serviceworker-rails'
 
 group :test do
   gem 'rspec-rails'
